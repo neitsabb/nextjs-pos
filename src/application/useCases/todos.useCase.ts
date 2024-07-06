@@ -5,7 +5,7 @@ import {
   FetchTodoByIdRequest,
 } from "../../domain/dtos/todos.dto";
 import { Todo } from "../../domain/models/todo.model";
-import { ITodosRepository } from "../../domain/repositories/todos.repository";
+import { ITodosRepository } from "../../domain/repositories/todos.interface";
 
 /**
  * Use case for fetching todos
