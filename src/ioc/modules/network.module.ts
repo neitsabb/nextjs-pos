@@ -5,7 +5,7 @@ import { SupabaseAdapter } from "@/infrastructure/adapters/supabase.adapter";
 import {
   SupabaseClient,
   SupabaseClientType,
-} from "@/infrastructure/services/supabase.service";
+} from "@/application/services/supabase.service";
 import {
   InfrastructureAdaptersSymbols,
   InfrastructureServicesSymbols,
