@@ -1,6 +1,6 @@
 import { IUseCase } from "@/domain/common/usesCases/usesCases.interface";
 import {
-  AddTodoRequest,
+  AddTodoDTO,
   DeleteTodoByIdRequest,
   FetchTodoByIdRequest,
 } from "@/domain/dtos/todos.dto";
@@ -18,13 +18,16 @@ import { Todo } from "@/domain/models/todo.model";
 export const TodosListPresenter = (
   fetchTodosUseCase: IUseCase<void, Promise<Todo[]>>,
   fetchTodoByIdUseCase: IUseCase<FetchTodoByIdRequest, Promise<Todo | null>>,
-  addTodoUseCase: IUseCase<Todo, Promise<Todo>>,
+  addTodoUseCase: IUseCase<AddTodoDTO, Promise<Todo>>,
   deleteTodoByIdUseCase: IUseCase<DeleteTodoByIdRequest, Promise<void>>
 ) => ({
   fetchTodos: async () => fetchTodosUseCase.execute(),
   fetchTodo: async ({ todoId }: FetchTodoByIdRequest) =>
     fetchTodoByIdUseCase.execute({ todoId }),
-  addTodo: async ({ todo }: AddTodoRequest) => addTodoUseCase.execute(todo),
+  addTodo: async (todoDTO: AddTodoDTO) => {
+    console.log("todo in presenter", todoDTO);
+    return addTodoUseCase.execute(todoDTO);
+  },
   deleteTodo: async ({ todoId }: DeleteTodoByIdRequest) =>
     deleteTodoByIdUseCase.execute({ todoId }),
 });

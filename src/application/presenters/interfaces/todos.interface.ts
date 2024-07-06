@@ -1,5 +1,5 @@
 import {
-  AddTodoRequest,
+  AddTodoDTO,
   DeleteTodoByIdRequest,
   FetchTodoByIdRequest,
 } from "@/domain/dtos/todos.dto";
@@ -14,6 +14,6 @@ import { Todo } from "@/domain/models/todo.model";
 export interface ITodosPresenter {
   fetchTodos: () => Promise<Todo[]>;
   fetchTodo: (request: FetchTodoByIdRequest) => Promise<Todo>;
-  addTodo: (request: AddTodoRequest) => Promise<Todo>;
+  addTodo: (request: AddTodoDTO) => Promise<Todo>;
   deleteTodo: (request: DeleteTodoByIdRequest) => Promise<void>;
 }
