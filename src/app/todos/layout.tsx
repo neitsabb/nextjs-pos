@@ -1,7 +1,7 @@
 import { TodosLayout } from "@/ui/common/layouts/TodosLayout";
 import React from "react";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = ({ children }: { children: React.ReactNode }) => {
   return <TodosLayout>{children}</TodosLayout>;
 };
 
