@@ -1,6 +1,6 @@
 import { AddTodoDTO } from "@/domain/dtos/todos.dto";
 import { Todo } from "@/domain/models/todo.model";
-import { IDatabaseAdapter } from "@/domain/services/database.interface";
+import { IDatabaseAdapter } from "@/application/services/database.interface";
 
 const table = "todos";
 

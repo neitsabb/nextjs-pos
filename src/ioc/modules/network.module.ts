@@ -1,6 +1,6 @@
 import { ContainerModule, interfaces } from "inversify";
 
-import { IDatabaseAdapter } from "@/domain/services/database.interface";
+import { IDatabaseAdapter } from "@/application/services/database.interface";
 import { SupabaseAdapter } from "@/infrastructure/adapters/supabase.adapter";
 import {
   SupabaseClient,

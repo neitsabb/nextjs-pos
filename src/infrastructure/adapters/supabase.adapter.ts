@@ -1,5 +1,5 @@
-import { IDatabaseAdapter } from "@/domain/services/database.interface";
-import { SupabaseClientType } from "./../services/supabase.service";
+import { IDatabaseAdapter } from "@/application/services/database.interface";
+import { SupabaseClientType } from "../services/supabase.service";
 
 /**
  * Supabase adapter implementation
