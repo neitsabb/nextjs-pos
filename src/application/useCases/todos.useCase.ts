@@ -1,11 +1,11 @@
-import { IUseCase } from "../common/usesCases/usesCases.interface";
+import { IUseCase } from "../../domain/common/usesCases/usesCases.interface";
 import {
   AddTodoDTO,
   DeleteTodoByIdRequest,
   FetchTodoByIdRequest,
-} from "../dtos/todos.dto";
-import { Todo } from "../models/todo.model";
-import { ITodosRepository } from "../repositories/todos.repository";
+} from "../../domain/dtos/todos.dto";
+import { Todo } from "../../domain/models/todo.model";
+import { ITodosRepository } from "../../domain/repositories/todos.repository";
 
 /**
  * Use case for fetching todos

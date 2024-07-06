@@ -13,7 +13,7 @@ import {
   addTodoUseCase,
   deleteTodoByIdUseCase,
   fetchTodosUseCase,
-} from "@/domain/useCases/todos.useCase";
+} from "@/application/useCases/todos.useCase";
 import {
   AddTodoDTO,
   DeleteTodoByIdRequest,
