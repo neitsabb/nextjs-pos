@@ -1,6 +1,6 @@
 import { IUseCase } from "../common/usesCases/usesCases.interface";
 import {
-  AddTodoRequest,
+  AddTodoDTO,
   DeleteTodoByIdRequest,
   FetchTodoByIdRequest,
 } from "../dtos/todos.dto";
@@ -39,8 +39,8 @@ export const fetchTodoByIdUseCase = (
  */
 export const addTodoUseCase = (
   todosRepository: ITodosRepository
-): IUseCase<AddTodoRequest, Promise<Todo>> => ({
-  execute: async ({ todo }) => todosRepository.addTodo({ todo }),
+): IUseCase<AddTodoDTO, Promise<Todo>> => ({
+  execute: async (dto: AddTodoDTO) => todosRepository.addTodo({ ...dto }),
 });
 
 /**

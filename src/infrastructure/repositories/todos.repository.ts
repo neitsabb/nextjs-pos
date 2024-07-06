@@ -1,29 +1,20 @@
-export const TodosRepository = ({ db }: { db: any }) => ({
+import { AddTodoDTO } from "@/domain/dtos/todos.dto";
+import { Todo } from "@/domain/models/todo.model";
+import { IDatabaseAdapter } from "@/domain/services/database.interface";
+
+const table = "todos";
+
+export const TodosRepository = (adapter: IDatabaseAdapter) => ({
   fetchTodos: async () => {
-    const { data, error } = await db.from("todos").select("*");
-    if (error) {
-      throw new Error(error.message);
-    }
-    return data;
+    return adapter.all<Todo>(table);
   },
   fetchTodoById: async (id: string) => {
-    const { data, error } = await db.from("todos").select("*").eq("id", id);
-    if (error) {
-      throw new Error(error.message);
-    }
-    return data[0];
+    return adapter.find<Todo>(table, id);
   },
-  addTodo: async (todo: any) => {
-    const { data, error } = await db.from("todos").insert([todo]);
-    if (error) {
-      throw new Error(error.message);
-    }
-    return data[0];
+  addTodo: async (todoDTO: AddTodoDTO) => {
+    return adapter.create<AddTodoDTO>(table, todoDTO);
   },
   deleteTodoById: async (id: string) => {
-    const { error } = await db.from("todos").delete().eq("id", id);
-    if (error) {
-      throw new Error(error.message);
-    }
+    return adapter.delete<Todo>(table, id);
   },
 });
