@@ -6,4 +6,6 @@
  */
 export interface Order {
   id: string;
+  table?: string;
+  customer?: string;
 }
