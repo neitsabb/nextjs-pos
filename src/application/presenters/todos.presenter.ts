@@ -24,10 +24,7 @@ export const TodosListPresenter = (
   fetchTodos: async () => fetchTodosUseCase.execute(),
   fetchTodo: async ({ todoId }: FetchTodoByIdRequest) =>
     fetchTodoByIdUseCase.execute({ todoId }),
-  addTodo: async (todoDTO: AddTodoDTO) => {
-    console.log("todo in presenter", todoDTO);
-    return addTodoUseCase.execute(todoDTO);
-  },
+  addTodo: async (todoDTO: AddTodoDTO) => addTodoUseCase.execute(todoDTO),
   deleteTodo: async ({ todoId }: DeleteTodoByIdRequest) =>
     deleteTodoByIdUseCase.execute({ todoId }),
 });
