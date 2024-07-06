@@ -1,7 +1,9 @@
 import { ContainerModule, interfaces } from "inversify";
 
-import { ApplicationPresentersSymbols } from "@/application/symbols";
-import { DomainModuleSymbols } from "@/domain/symbols";
+import {
+  ApplicationPresentersSymbols,
+  ApplicationUseCasesSymbols,
+} from "@/application/symbols";
 import {
   InfrastructureAdaptersSymbols,
   InfrastructureDataSymbols,
@@ -17,7 +19,7 @@ import {
   addTodoUseCase,
   deleteTodoByIdUseCase,
   fetchTodosUseCase,
-} from "@/application/useCases/todos.useCase";
+} from "@/application/useCases/todos.useCases";
 
 import {
   AddTodoDTO,
@@ -42,28 +44,28 @@ const initializeModule = (bind: interfaces.Bind) => {
 
   // Bind use cases
   bind<IUseCase<void, Promise<Todo[]>>>(
-    DomainModuleSymbols.FetchTodosUseCase
+    ApplicationUseCasesSymbols.FetchTodosUseCase
   ).toConstantValue(
     applyDependencies(fetchTodosUseCase, [
       InfrastructureDataSymbols.TodosRepository,
     ])
   );
   bind<IUseCase<FetchTodoByIdRequest, Promise<Todo | null>>>(
-    DomainModuleSymbols.FetchTodoByIdUseCase
+    ApplicationUseCasesSymbols.FetchTodoByIdUseCase
   ).toConstantValue(
     applyDependencies(fetchTodosUseCase, [
       InfrastructureDataSymbols.TodosRepository,
     ])
   );
   bind<IUseCase<AddTodoDTO, Promise<Todo>>>(
-    DomainModuleSymbols.AddTodoUseCase
+    ApplicationUseCasesSymbols.AddTodoUseCase
   ).toConstantValue(
     applyDependencies(addTodoUseCase, [
       InfrastructureDataSymbols.TodosRepository,
     ])
   );
   bind<IUseCase<DeleteTodoByIdRequest, Promise<void>>>(
-    DomainModuleSymbols.DeleteTodoByIdUseCase
+    ApplicationUseCasesSymbols.DeleteTodoByIdUseCase
   ).toConstantValue(
     applyDependencies(deleteTodoByIdUseCase, [
       InfrastructureDataSymbols.TodosRepository,
@@ -75,10 +77,10 @@ const initializeModule = (bind: interfaces.Bind) => {
     ApplicationPresentersSymbols.TodosPresenter
   ).toConstantValue(
     applyDependencies(TodosListPresenter, [
-      DomainModuleSymbols.FetchTodosUseCase,
-      DomainModuleSymbols.FetchTodoByIdUseCase,
-      DomainModuleSymbols.AddTodoUseCase,
-      DomainModuleSymbols.DeleteTodoByIdUseCase,
+      ApplicationUseCasesSymbols.FetchTodosUseCase,
+      ApplicationUseCasesSymbols.FetchTodoByIdUseCase,
+      ApplicationUseCasesSymbols.AddTodoUseCase,
+      ApplicationUseCasesSymbols.DeleteTodoByIdUseCase,
     ])
   );
 };
