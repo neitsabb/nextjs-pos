@@ -1,9 +1,5 @@
-"use server";
-
-import { revalidatePath } from "next/cache";
 import { TodoItem } from "./components/TodoItem";
 import { useTodos } from "./hooks";
-import { AddTodoDTO } from "@/domain/dtos/todos.dto";
 import { CreateTodoForm } from "./components/CreateTodoForm";
 
 export const TodosView = async () => {
