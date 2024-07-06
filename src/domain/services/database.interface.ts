@@ -1,3 +1,6 @@
+/**
+ * Database Adapter Interface
+ */
 export interface IDatabaseAdapter {
   all<T>(table: string): Promise<T[]>;
   find<T>(table: string, id: string): Promise<T>;

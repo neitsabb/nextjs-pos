@@ -4,6 +4,10 @@ import { IDatabaseAdapter } from "@/domain/services/database.interface";
 
 const table = "todos";
 
+/**
+ * Repository for Todos
+ * @param {IDatabaseAdapter} adapter
+ */
 export const TodosRepository = (adapter: IDatabaseAdapter) => ({
   fetchTodos: async () => {
     return adapter.all<Todo>(table);

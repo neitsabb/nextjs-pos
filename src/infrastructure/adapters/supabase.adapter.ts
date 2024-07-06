@@ -4,6 +4,10 @@ import {
 } from "./../services/supabase.service";
 import { IDatabaseAdapter } from "@/domain/services/database.interface";
 
+/**
+ * Supabase adapter implementation
+ * @param {SupabaseClientType} db
+ */
 export const SupabaseAdapter = (db: SupabaseClientType): IDatabaseAdapter => ({
   async all<T>(table: string): Promise<T[]> {
     const { data, error } = await db.from(table).select("*");
