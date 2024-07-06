@@ -2,15 +2,19 @@ import {
   InfrastructureAdaptersSymbols,
   InfrastructureDataSymbols,
 } from "@/infrastructure/symbols";
-import { interfaces } from "inversify";
+import { ContainerModule, interfaces } from "inversify";
 import { applyDependencies } from "../common/utils";
 import { IOrdersRepository } from "@/domain/repositories/orders.interface";
 import { OrdersRepository } from "@/infrastructure/repositories/orders.repository";
 import { IUseCase } from "@/domain/common/usesCases/usesCases.interface";
 import { Order } from "@/domain/models/order.model";
-import { fetchTodosUseCase } from "@/application/useCases/todos.useCases";
-import { ApplicationUseCasesSymbols } from "@/application/symbols";
+import {
+  ApplicationPresentersSymbols,
+  ApplicationUseCasesSymbols,
+} from "@/application/symbols";
 import { fetchOrdersUseCase } from "@/application/useCases/orders.useCases";
+import { IOrdersPresenter } from "@/application/presenters/interfaces/orders.interface";
+import { OrdersPresenter } from "@/application/presenters/orders.presenter";
 
 const initializeModule = (bind: interfaces.Bind) => {
   // Bind repositories
@@ -30,5 +34,15 @@ const initializeModule = (bind: interfaces.Bind) => {
       InfrastructureDataSymbols.OrdersRepository,
     ])
   );
+
   // Bind presenters
+  bind<IOrdersPresenter>(
+    ApplicationPresentersSymbols.OrdersPresenter
+  ).toConstantValue(
+    applyDependencies(OrdersPresenter, [
+      ApplicationUseCasesSymbols.FetchOrdersUseCase,
+    ])
+  );
 };
+
+export const OrdersModule = new ContainerModule(initializeModule);

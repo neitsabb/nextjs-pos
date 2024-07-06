@@ -1,6 +1,7 @@
 import { Container } from "inversify";
-import { NetworkModule } from "./modules/network.module";
 import { TodosModule } from "./modules/todos.module";
+import { NetworkModule } from "./modules/network.module";
+import { OrdersModule } from "./modules/orders.module";
 
 const ApplicationContainer = new Container({
   defaultScope: "Singleton",
@@ -13,6 +14,7 @@ const initializeContainer = () => {
 
   // Domain modules
   ApplicationContainer.load(TodosModule);
+  ApplicationContainer.load(OrdersModule);
 };
 
 initializeContainer();
