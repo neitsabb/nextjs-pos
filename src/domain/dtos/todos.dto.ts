@@ -10,12 +10,12 @@ export type FetchTodoByIdRequest = {
 };
 
 /**
- * Interface for AddTodoRequest
+ * Interface for AddTodoDTO
  *
  * @export
  */
-export type AddTodoRequest = {
-  readonly todo: Todo;
+export type AddTodoDTO = {
+  readonly title: string;
 };
 
 /**
@@ -28,7 +28,7 @@ export type DeleteTodoByIdRequest = {
 };
 
 /**
- * Interface for AddTodoRequest
+ * Interface for AddTodoDTO
  *
  * @export
  */
